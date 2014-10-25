@@ -8,11 +8,12 @@ T="$(date +%s)"
 if [ -f /.installed ]
 then
 	echo 'Already installed.'
-	source ~/env/bin/activate
+	source /home/vagrant/env/bin/activate
 
 else
 	echo ' INSTALLING '
 	echo '------------'
+	cd /home/vagrant
 	sudo apt-get update -y
 	sudo apt-get install python-pip python-dev build-essential -y
 	sudo pip install --upgrade pip
@@ -20,11 +21,12 @@ else
 	sudo pip install --upgrade virtualenv
 	sudo apt-get install nginx -y
 	virtualenv env
-	source ~/env/bin/activate
+	source /home/vagrant/env/bin/activate
 	pip install -U devpi-server
 	sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.original # backup the original
 	sudo cp /vagrant/nginx.conf /etc/nginx/nginx.conf
 	sudo touch /.installed # mark for the next 'vagrant up' that everything is already installed
+	sudo nginx
 fi
 devpi-server --port 4040 --start
 sudo nginx -s reload
