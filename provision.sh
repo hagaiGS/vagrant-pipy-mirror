@@ -28,6 +28,8 @@ else
 	sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.original # backup the original
 	sudo cp /vagrant/nginx.conf /etc/nginx/nginx.conf
 	sudo touch /.installed # mark for the next 'vagrant up' that everything is already installed
+	mkdir /home/vagrant/nginx_server
+	mkdir /home/vagrant/nginx_server/cloudify
 	echo "### Starting nginx"
 	sudo nginx
 fi
