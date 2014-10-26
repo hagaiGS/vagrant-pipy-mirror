@@ -4,6 +4,7 @@
 T="$(date +%s)"
  # TODO: fix the env location
  # TODO: check installing nginx without sudo permissions
+ # TODO: use user ubuntu instead of vagrant
 
 if [ -f /.installed ]
 then

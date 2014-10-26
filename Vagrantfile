@@ -12,6 +12,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell", run: "always" do |s|
     s.path = "provision.sh"
-    s.privileged = true
+    s.privileged = false
   end
 end
